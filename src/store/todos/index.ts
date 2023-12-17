@@ -7,12 +7,14 @@ export interface TodosState {
   todos: Todo[];
   selectedTodo: Todo | null;
   todoInfoDialogIsOpen: boolean;
+  editTodoDialogIsOpen: boolean;
 }
 
 const initialState: TodosState = {
   todos: todosInitialData,
   selectedTodo: null,
   todoInfoDialogIsOpen: false,
+  editTodoDialogIsOpen: false,
 };
 
 export const todosSlice = createSlice({
@@ -35,6 +37,9 @@ export const todosSlice = createSlice({
     toggleTodoInfoDialog: (state) => {
       state.todoInfoDialogIsOpen = !state.todoInfoDialogIsOpen;
     },
+    toggleEditTodoDialog: (state) => {
+      state.editTodoDialogIsOpen = !state.editTodoDialogIsOpen;
+    },
   },
 });
 
@@ -45,6 +50,7 @@ export const {
   toggleTodoInfoDialog,
   selectTodo,
   toggleTodoStatus,
+  toggleEditTodoDialog,
 } = todosSlice.actions;
 
 export default todosSlice.reducer;

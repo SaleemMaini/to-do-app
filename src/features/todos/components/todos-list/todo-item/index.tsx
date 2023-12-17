@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store";
 import {
   selectTodo,
+  toggleEditTodoDialog,
   toggleTodoInfoDialog,
   toggleTodoStatus,
 } from "@/store/todos";
@@ -31,6 +32,11 @@ export const TodoItem = (props: Props) => {
     dispatch(toggleTodoInfoDialog());
   };
 
+  const handleClickEditTodoBtn = () => {
+    dispatch(selectTodo(todo));
+    dispatch(toggleEditTodoDialog());
+  };
+
   return (
     <TodoItemWrapper>
       <Stack direction="row" alignItems="center">
@@ -52,7 +58,7 @@ export const TodoItem = (props: Props) => {
         </IconButton>
 
         {/* Edit */}
-        <IconButton aria-label="delete">
+        <IconButton aria-label="edit" onClick={handleClickEditTodoBtn}>
           <EditIcon />
         </IconButton>
 

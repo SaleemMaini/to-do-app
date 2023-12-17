@@ -1,16 +1,9 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  Grid,
-  IconButton,
-  Typography,
-} from "@mui/material";
-import { Todo } from "../../types/to-do";
+import { DialogContent, Grid, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store";
 import { selectTodo, toggleTodoInfoDialog } from "@/store/todos";
-import CloseIcon from "@mui/icons-material/Close";
+
+import { CustomDialog } from "@/components/dialog";
 
 export const TodoInfoDialog = () => {
   // ** Store
@@ -35,24 +28,11 @@ export const TodoInfoDialog = () => {
   const { title, createdAt, description, finishedAt, archiveAt } = selectedTodo;
 
   return (
-    <Dialog onClose={handleClose} open={todoInfoDialogIsOpen}>
-      {/* Title */}
-      <DialogTitle sx={{ m: 0, p: 2 }} id="dialog-title">
-        {title}
-      </DialogTitle>
-
-      <IconButton
-        aria-label="close"
-        onClick={handleClose}
-        sx={{
-          position: "absolute",
-          right: 8,
-          top: 8,
-          color: (theme) => theme.palette.grey[500],
-        }}
-      >
-        <CloseIcon />
-      </IconButton>
+    <CustomDialog
+      onClose={handleClose}
+      isOpen={todoInfoDialogIsOpen}
+      title={title}
+    >
       <DialogContent>
         <Grid container spacing={2}>
           {/* Created At */}
@@ -86,6 +66,6 @@ export const TodoInfoDialog = () => {
           ) : null}
         </Grid>
       </DialogContent>
-    </Dialog>
+    </CustomDialog>
   );
 };
