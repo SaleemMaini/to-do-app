@@ -1,0 +1,9 @@
+export type Todo = {
+  id: number;
+  title: string;
+  checked: boolean;
+  description?: string;
+  createdAt?: Date;
+  finishedAt?: Date;
+  archiveAt?: Date;
+};
