@@ -34,6 +34,10 @@ export const todosSlice = createSlice({
     selectTodo: (state, action: PayloadAction<Todo | null>) => {
       state.selectedTodo = action.payload;
     },
+    editTodo: (state, action: PayloadAction<Todo>) => {
+      const idx = state.todos.findIndex((t) => t.id === action.payload.id);
+      state.todos[idx] = action.payload;
+    },
     toggleTodoInfoDialog: (state) => {
       state.todoInfoDialogIsOpen = !state.todoInfoDialogIsOpen;
     },
@@ -51,6 +55,7 @@ export const {
   selectTodo,
   toggleTodoStatus,
   toggleEditTodoDialog,
+  editTodo,
 } = todosSlice.actions;
 
 export default todosSlice.reducer;
