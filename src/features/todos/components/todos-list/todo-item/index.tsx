@@ -6,7 +6,11 @@ import OpenInFullIcon from "@mui/icons-material/OpenInFull";
 import { TodoItemWrapper } from "./style";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store";
-import { selectTodo, toggleTodoInfoDialog } from "@/store/todos";
+import {
+  selectTodo,
+  toggleTodoInfoDialog,
+  toggleTodoStatus,
+} from "@/store/todos";
 
 type Props = {
   todo: Todo;
@@ -19,7 +23,7 @@ export const TodoItem = (props: Props) => {
   const dispatch = useDispatch<AppDispatch>();
 
   // ** Variables
-  const { title, checked, description } = todo;
+  const { id, title, checked, description } = todo;
 
   // ** Handlers
   const handleClickViewTodoBtn = () => {
@@ -30,7 +34,11 @@ export const TodoItem = (props: Props) => {
   return (
     <TodoItemWrapper>
       <Stack direction="row" alignItems="center">
-        <Checkbox checked={checked} sx={{ mr: 1 }} />
+        <Checkbox
+          checked={checked}
+          sx={{ mr: 1 }}
+          onChange={() => dispatch(toggleTodoStatus({ id }))}
+        />
         <Typography variant="subtitle2">{title}</Typography>
       </Stack>
 

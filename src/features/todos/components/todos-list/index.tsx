@@ -6,7 +6,8 @@ import { Todo } from "../../types/to-do";
 
 export const TodosList = () => {
   // ** Store
-  const { todos } = useSelector((state: RootState) => state.todos);
+  const { todos 
+  } = useSelector((state: RootState) => state.todos);
 
   return (
     <Box sx={{ mt: 2 }}>

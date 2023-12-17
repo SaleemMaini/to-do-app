@@ -25,6 +25,10 @@ export const todosSlice = createSlice({
     deleteTodo: (state, action: PayloadAction<{ id: Todo["id"] }>) => {
       state.todos.filter((todo) => todo.id !== action.payload.id);
     },
+    toggleTodoStatus: (state, action: PayloadAction<{ id: Todo["id"] }>) => {
+      const idx = state.todos.findIndex((t) => t.id === action.payload.id);
+      state.todos[idx].checked = !state.todos[idx].checked;
+    },
     selectTodo: (state, action: PayloadAction<Todo | null>) => {
       state.selectedTodo = action.payload;
     },
@@ -35,7 +39,12 @@ export const todosSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { createTodo, deleteTodo, toggleTodoInfoDialog, selectTodo } =
-  todosSlice.actions;
+export const {
+  createTodo,
+  deleteTodo,
+  toggleTodoInfoDialog,
+  selectTodo,
+  toggleTodoStatus,
+} = todosSlice.actions;
 
 export default todosSlice.reducer;
