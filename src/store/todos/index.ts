@@ -25,7 +25,7 @@ export const todosSlice = createSlice({
       state.todos.push(action.payload);
     },
     deleteTodo: (state, action: PayloadAction<{ id: Todo["id"] }>) => {
-      state.todos.filter((todo) => todo.id !== action.payload.id);
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload.id);
     },
     toggleTodoStatus: (state, action: PayloadAction<{ id: Todo["id"] }>) => {
       const idx = state.todos.findIndex((t) => t.id === action.payload.id);

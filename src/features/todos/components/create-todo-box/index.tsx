@@ -1,6 +1,6 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { AddCircleOutlineOutlined } from "@mui/icons-material";
-import { createTodo } from "@/store/todos";
+import todos, { createTodo } from "@/store/todos";
 import { useState } from "react";
 import { Todo } from "../../types/to-do";
 import { useDispatch } from "react-redux";
@@ -43,6 +43,8 @@ export const CreateTodoBox = () => {
               sx={{ px: 2 }}
               variant="contained"
               onClick={handelClickCreateTodoBtn}
+              disabled={!todoTitle}
+              color="success"
             >
               <AddCircleOutlineOutlined sx={{ mr: 0.5 }} />
               <Typography variant="button">Create</Typography>

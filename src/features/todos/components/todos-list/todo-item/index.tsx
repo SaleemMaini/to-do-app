@@ -7,6 +7,7 @@ import { TodoItemWrapper } from "./style";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store";
 import {
+  deleteTodo,
   selectTodo,
   toggleEditTodoDialog,
   toggleTodoInfoDialog,
@@ -37,6 +38,10 @@ export const TodoItem = (props: Props) => {
     dispatch(toggleEditTodoDialog());
   };
 
+  const handleClickDeleteTodoBtn = () => {
+    dispatch(deleteTodo({ id }));
+  };
+
   return (
     <TodoItemWrapper>
       <Stack direction="row" alignItems="center">
@@ -51,7 +56,7 @@ export const TodoItem = (props: Props) => {
       <Typography>{description}</Typography>
 
       {/* Actions */}
-      <Stack direction="row" spacing={1}>
+      <Stack direction="row">
         {/* Open */}
         <IconButton aria-label="open" onClick={handleClickViewTodoBtn}>
           <OpenInFullIcon />
@@ -63,7 +68,11 @@ export const TodoItem = (props: Props) => {
         </IconButton>
 
         {/* Delete */}
-        <IconButton aria-label="delete">
+        <IconButton
+          aria-label="delete"
+          onClick={handleClickDeleteTodoBtn}
+          color="error"
+        >
           <DeleteIcon />
         </IconButton>
       </Stack>
