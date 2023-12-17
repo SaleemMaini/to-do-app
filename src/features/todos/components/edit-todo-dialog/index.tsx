@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store";
-import { editTodo, selectTodo, toggleEditTodoDialog } from "@/store/todos";
+import { editTodo, selectTodo, toggleEditTodoDialog } from "@/store/todos/slice";
 
 import { CustomDialog } from "@/components/dialog";
 import { useEffect, useState } from "react";

@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import todos from "./todos";
+import todos from "./todos/slice";
+import weather from "./weather/slice";
 
 export const store = configureStore({
-  reducer: { todos },
+  reducer: { todos, weather },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

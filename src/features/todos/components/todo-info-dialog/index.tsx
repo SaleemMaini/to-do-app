@@ -1,7 +1,7 @@
 import { DialogContent, Grid, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store";
-import { selectTodo, toggleTodoInfoDialog } from "@/store/todos";
+import { selectTodo, toggleTodoInfoDialog } from "@/store/todos/slice";
 
 import { CustomDialog } from "@/components/dialog";
 

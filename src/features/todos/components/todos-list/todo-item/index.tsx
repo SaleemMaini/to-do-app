@@ -13,7 +13,7 @@ import {
   toggleEditTodoDialog,
   toggleTodoInfoDialog,
   toggleTodoStatus,
-} from "@/store/todos";
+} from "@/store/todos/slice";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import UnarchiveIcon from "@mui/icons-material/Unarchive";
 

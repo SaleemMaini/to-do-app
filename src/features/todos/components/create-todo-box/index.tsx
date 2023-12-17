@@ -1,6 +1,6 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { AddCircleOutlineOutlined } from "@mui/icons-material";
-import todos, { createTodo } from "@/store/todos";
+import todos, { createTodo } from "@/store/todos/slice";
 import { useState } from "react";
 import { Todo } from "../../types/to-do";
 import { useDispatch } from "react-redux";

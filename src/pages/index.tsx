@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import { TodosView } from "@/features/todos/views/todos";
+import { CurrentWeatherBox } from "@/features/weather/components/current-weather-box";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,6 +16,7 @@ export default function Home() {
       </Head>
       <main className={`${inter.className}`}>
         <TodosView />
+        <CurrentWeatherBox />
       </main>
     </>
   );
