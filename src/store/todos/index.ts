@@ -1,3 +1,4 @@
+import { todosInitialData } from "@/data/todos";
 import { Todo } from "@/features/todos/types/to-do";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
@@ -7,11 +8,11 @@ export interface TodosState {
 }
 
 const initialState: TodosState = {
-  todos: [],
+  todos: todosInitialData,
 };
 
-export const counterSlice = createSlice({
-  name: "counter",
+export const todosSlice = createSlice({
+  name: "todos",
   initialState,
   reducers: {
     createTodo: (state, action: PayloadAction<Todo>) => {
@@ -24,6 +25,6 @@ export const counterSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { createTodo, deleteTodo } = counterSlice.actions;
+export const { createTodo, deleteTodo } = todosSlice.actions;
 
-export default counterSlice.reducer;
+export default todosSlice.reducer;

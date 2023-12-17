@@ -1,6 +1,6 @@
 import { Todo } from "@/features/todos/types/to-do";
 
-export const todos: Todo[] = [
+export const todosInitialData: Todo[] = [
   {
     id: 0,
     checked: false,

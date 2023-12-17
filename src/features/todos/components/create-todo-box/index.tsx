@@ -1,7 +1,31 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { AddCircleOutlineOutlined } from "@mui/icons-material";
+import { createTodo } from "@/store/todos";
+import { useState } from "react";
+import { Todo } from "../../types/to-do";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/store";
 
 export const CreateTodoBox = () => {
+  // ** States
+  const [todoTitle, setTodoTitle] = useState<string>("");
+
+  // ** Hooks
+  const dispatch = useDispatch<AppDispatch>();
+
+  // ** Handlers
+  const handelClickCreateTodoBtn = () => {
+    const newTodoData: Todo = {
+      title: todoTitle,
+      checked: false,
+      id: Math.random(),
+      createdAt: new Date(),
+    };
+
+    dispatch(createTodo(newTodoData));
+    setTodoTitle("");
+  };
+
   return (
     <Box>
       <TextField
@@ -9,6 +33,8 @@ export const CreateTodoBox = () => {
         label="Create To Do"
         variant="outlined"
         sx={{ width: "100%" }}
+        value={todoTitle}
+        onChange={(e) => setTodoTitle(e.target.value)}
         InputProps={{
           endAdornment: (
             <Button
@@ -16,6 +42,7 @@ export const CreateTodoBox = () => {
               size="large"
               sx={{ px: 2 }}
               variant="contained"
+              onClick={handelClickCreateTodoBtn}
             >
               <AddCircleOutlineOutlined sx={{ mr: 0.5 }} />
               <Typography variant="button">Create</Typography>
