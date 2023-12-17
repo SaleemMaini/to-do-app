@@ -22,7 +22,7 @@ export const todos: Todo[] = [
   {
     id: 3,
     checked: false,
-    title: "Todo 1",
+    title: "Todo 3",
     description: "lorem ipsum dolor sit am rem par",
     archiveAt: new Date(),
     createdAt: new Date(),
