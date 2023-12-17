@@ -8,11 +8,14 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store";
 import {
   deleteTodo,
+  editTodo,
   selectTodo,
   toggleEditTodoDialog,
   toggleTodoInfoDialog,
   toggleTodoStatus,
 } from "@/store/todos";
+import ArchiveIcon from "@mui/icons-material/Archive";
+import UnarchiveIcon from "@mui/icons-material/Unarchive";
 
 type Props = {
   todo: Todo;
@@ -25,7 +28,7 @@ export const TodoItem = (props: Props) => {
   const dispatch = useDispatch<AppDispatch>();
 
   // ** Variables
-  const { id, title, checked, description } = todo;
+  const { id, title, checked, description, archiveAt } = todo;
 
   // ** Handlers
   const handleClickViewTodoBtn = () => {
@@ -40,6 +43,15 @@ export const TodoItem = (props: Props) => {
 
   const handleClickDeleteTodoBtn = () => {
     dispatch(deleteTodo({ id }));
+  };
+
+  const handleClickArchiveTodoBtn = () => {
+    dispatch(
+      editTodo({
+        ...todo,
+        archiveAt: archiveAt ? undefined : new Date(),
+      })
+    );
   };
 
   return (
@@ -65,6 +77,15 @@ export const TodoItem = (props: Props) => {
         {/* Edit */}
         <IconButton aria-label="edit" onClick={handleClickEditTodoBtn}>
           <EditIcon />
+        </IconButton>
+
+        {/* Archive */}
+        <IconButton
+          aria-label="archive"
+          onClick={handleClickArchiveTodoBtn}
+          color={archiveAt ? "info" : "default"}
+        >
+          {archiveAt ? <UnarchiveIcon /> : <ArchiveIcon />}
         </IconButton>
 
         {/* Delete */}
