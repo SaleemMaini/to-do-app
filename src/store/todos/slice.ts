@@ -29,7 +29,9 @@ export const todosSlice = createSlice({
     },
     toggleTodoStatus: (state, action: PayloadAction<{ id: Todo["id"] }>) => {
       const idx = state.todos.findIndex((t) => t.id === action.payload.id);
-      state.todos[idx].checked = !state.todos[idx].checked;
+      const newValue = !state.todos[idx].checked;
+      state.todos[idx].checked = newValue;
+      state.todos[idx].finishedAt = newValue ? new Date() : undefined;
     },
     selectTodo: (state, action: PayloadAction<Todo | null>) => {
       state.selectedTodo = action.payload;
